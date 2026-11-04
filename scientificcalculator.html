@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scientific Calculator</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: #172033; color: white; }
+    .calculator { width: 500px; padding: 20px; border-radius: 16px; background: #222d42; }
+    .display { margin-bottom: 12px; padding: 16px; border-radius: 10px; background: #111827; }
+    .result { width: 100%; min-height: 40px; border: 0; background: transparent; color: white; font-size: 32px; text-align: right; }
+    .buttons { display: grid; gap: 8px; }
+    .button-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    button { min-height: 52px; border: 0; border-radius: 8px; background: #3a4962; color: white; font-size: 16px; cursor: pointer; }
+    button:hover { background: #50617d; }
+    .operator { background: #c47a18; }
+    .equals { background: #159447; }
+  </style>
+</head>
+<body>
+  <form class="calculator" name="calculator">
+    <div class="display">
+      <input class="result" id="display" value="0" readonly />
+    </div>
+
+    <div class="buttons">
+      <div class="button-row">
+        <button type="button" onclick="display.value='0'">AC</button>
+        <button type="button" onclick="display.value=display.value.slice(0,-1)||'0'">DEL</button>
+        <button type="button" onclick="display.value=display.value/100">%</button>
+        <button type="button" onclick="display.value=Math.PI">π</button>
+      </div>
+      <div class="button-row">
+        <button type="button" onclick="display.value=Math.sin(display.value*Math.PI/180)">sin</button>
+        <button type="button" onclick="display.value=Math.cos(display.value*Math.PI/180)">cos</button>
+        <button type="button" onclick="display.value=Math.tan(display.value*Math.PI/180)">tan</button>
+        <button type="button" onclick="display.value=Math.log10(display.value)">log</button>
+      </div>
+      <div class="button-row">
+        <button type="button" onclick="display.value=Math.log(display.value)">ln</button>
+        <button type="button" onclick="display.value=Math.sqrt(display.value)">√</button>
+        <button type="button" onclick="display.value+='**'">xʸ</button>
+        <button type="button" onclick="display.value=10**display.value">10ˣ</button>
+      </div>
+      <div class="button-row">
+        <button type="button" onclick="display.value=Math.exp(display.value)">exp</button>
+        <button type="button" onclick="display.value=Math.E">e</button>
+        <button type="button" onclick="display.value=1/display.value">1/x</button>
+        <button type="button" class="operator" onclick="display.value+='+'">+</button>
+      </div>
+      <div class="button-row">
+        <button type="button" onclick="display.value+='7'">7</button>
+        <button type="button" onclick="display.value+='8'">8</button>
+        <button type="button" onclick="display.value+='9'">9</button>
+        <button type="button" class="operator" onclick="display.value+='/'">÷</button>
+      </div>
+      <div class="button-row">
+        <button type="button" onclick="display.value+='4'">4</button>
+        <button type="button" onclick="display.value+='5'">5</button>
+        <button type="button" onclick="display.value+='6'">6</button>
+        <button type="button" class="operator" onclick="display.value+='*'">×</button>
+      </div>
+      <div class="button-row">
+        <button type="button" onclick="display.value+='1'">1</button>
+        <button type="button" onclick="display.value+='2'">2</button>
+        <button type="button" onclick="display.value+='3'">3</button>
+        <button type="button" class="operator" onclick="display.value+='-'">−</button>
+      </div>
+      <div class="button-row">
+        <button type="button" onclick="display.value+='0'">0</button>
+        <button type="button" onclick="display.value+='.'">.</button>
+        <button type="button" class="equals" onclick="display.value=eval(display.value)">=</button>
+      </div>
+    </div>
+  </form>
+</body>
+</html>
